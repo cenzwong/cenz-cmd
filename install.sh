@@ -12,4 +12,9 @@ fi
 NAME="$1"; shift
 URL="https://raw.githubusercontent.com/${REPO}/${BRANCH}/bin/${NAME}.sh"
 
-curl -fsSL "$URL" | bash -s -- "$@"
+# curl -fsSL "$URL" | bash -s -- "$@"
+
+curl -fsSL \
+  -H 'Cache-Control: no-cache, no-store, max-age=0' \
+  -H 'Pragma: no-cache' \
+  "$URL" | bash -s -- "$@"
